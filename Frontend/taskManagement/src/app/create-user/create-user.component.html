@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center">Create User</h2>
+            <form (ngSubmit)="onCreateUserSubmit()" #userForm="ngForm">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" [(ngModel)]="userData.username" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" [(ngModel)]="userData.email" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" [(ngModel)]="userData.password" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" name="role" [(ngModel)]="userData.role" class="form-control" required>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </select>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Create User</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

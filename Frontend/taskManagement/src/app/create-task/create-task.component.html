@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <h2>Create Task</h2>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="taskTitle">Task Title</label>
+        <input type="text" id="taskTitle" formControlName="taskTitle" class="form-control" required>
+      </div>
+  
+      <div formArrayName="subtasks">
+        <div class="form-group" *ngFor="let subtaskControl of subtasks.controls; let i = index">
+          <div class="input-group">
+            <!-- Use the 'getFormControl' method to access the control and cast it to 'FormControl' -->
+            <input [formControl]="getFormControl(i)" class="form-control" required>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-danger" (click)="removeSubtask(i)">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <button type="button" class="btn btn-primary mt-2" (click)="addSubtask()">Add Subtask</button>
+  
+      <button type="submit" class="btn btn-success mt-2" [disabled]="!taskForm.valid">Create Task</button>
+    </form>
+  </div>
+  
